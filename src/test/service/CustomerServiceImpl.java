@@ -5,7 +5,7 @@ import test.dao.CustomerDaoImpl;
 import test.factory.BeanFactory;
 
 public class CustomerServiceImpl implements CustomerService {
-    private CustomerDao customerDaoImpl= BeanFactory.getCustomerDao();
+    private CustomerDao customerDaoImpl= (CustomerDaoImpl)BeanFactory.getBean("CUSTOMERDAO");
     @Override
     public void saveCustomer() {
         System.out.println("Service");

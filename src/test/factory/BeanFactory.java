@@ -1,23 +1,19 @@
 package test.factory;
 
-import test.dao.CustomerDao;
-import test.dao.CustomerDaoImpl;
-import test.service.CustomerService;
-import test.service.CustomerServiceImpl;
+
+import java.util.ResourceBundle;
 
 public class BeanFactory {
-    public static CustomerService getCustomerService() {
+    private static ResourceBundle resourceBundle=ResourceBundle.getBundle("bean");
+
+    public static Object getBean(String className) {
         try {
-            return (CustomerServiceImpl)Class.forName("test.service.CustomerServiceImpl").newInstance();
+            String name=resourceBundle.getString(className);
+            return Class.forName(name).newInstance();
         }catch (Exception e){
             throw new RuntimeException(e.toString());
         }
     }
-    public static CustomerDao getCustomerDao() {
-        try {
-            return (CustomerDaoImpl)Class.forName("test.dao.CustomerDaoImpl").newInstance();
-        }catch (Exception e){
-            throw new RuntimeException(e.toString());
-        }
-    }
+
+
 }
