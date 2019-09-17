@@ -8,4 +8,11 @@ public class BeanFactory {
             throw new RuntimeException(e.toString());
         }
     }
+    public static Class<?> getCustomerDao() {
+        try {
+            return Class.forName("test.dao.CustomerDaoImpl");
+        }catch (Exception e){
+            throw new RuntimeException(e.toString());
+        }
+    }
 }
